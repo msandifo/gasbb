@@ -64,6 +64,59 @@ wall.flow.plots[[2]] <-  ggplot(head(prod.qld.b, -1), aes(gasdate, supply))   +
        title= "Regional - QLD, supply",
        subtitle="monthly averages")
 
+prod.qld.b.month.g <-tail(head(prod.qld.b.month , -1), -1)   %>%
+  gather(source, value, -month, -gasdate)
+
+wall.flow.names[[3]] <- "qld.supply.curtis.demand" 
+wall.flow.plots[[3]] <-    ggplot(prod.qld.b.month.g %>% subset(source != "balance"), aes(gasdate, value, col=source))   +
+    geom_smooth(  aes(fill=source), se=T, alpha=.08,   size=0, span=.3)+
+   # geom_smooth( aes(gasdate, demand ),  se=F,   col="red3", size=.5, span=.3)+
+    geom_line(size=.2,   alpha=.8)  +
+    geom_point(size=1, col="white" )  +
+    geom_point(size=.5)  +
+    scale_colour_manual(values=c( "red3","Blue3"))+
+    scale_fill_manual(values=c( "red3","Blue3"))+
+    theme(legend.position = c(.15, .8), legend.title=element_blank())+
+     
+  #geom_hline(yintercept = seq(3400,4200, 200), size=.05, col="grey70")+
+  # scale_y_log10()+
+  # geom_hline(yintercept =c(100, 250, 500,1000,2500 ), size=.05, col="grey70")+
+  #hrbrthemes::theme_ipsum_rc(grid_col="grey95")+
+  labs(y= "TJ/day",
+       x = NULL,
+       title= "Regional - QLD supply (blue), Curtis Island demand (red)",
+       subtitle="monthly averages")
+
+wall.flow.names[[4]] <- "qld.supply.curtis.demand.blance" 
+wall.flow.plots[[4]] <-  
+  ggplot(prod.qld.b.month.g %>% subset(source == "balance"), aes(gasdate, value, col=source))   +
+    geom_smooth(  aes(fill=source), se=T, alpha=.08,   size=0, span=.2)+
+    # geom_smooth( aes(gasdate, demand ),  se=F,   col="red3", size=.5, span=.3)+
+    geom_line(size=.2,   alpha=.8)  +
+    geom_point(size=1, col="white" )  +
+    geom_point(size=.5)  +
+    scale_colour_manual(values=c("Blue3", "red3"))+
+    scale_fill_manual(values=c("Blue3", "red3"))+
+    theme(legend.position = "None", legend.title=element_blank())+
+    
+    #geom_hline(yintercept = seq(3400,4200, 200), size=.05, col="grey70")+
+    # scale_y_log10()+
+    # geom_hline(yintercept =c(100, 250, 500,1000,2500 ), size=.05, col="grey70")+
+    #hrbrthemes::theme_ipsum_rc(grid_col="grey95")+
+    
+    geom_hline(yintercept=459, size=.3, linetype=2)+
+    annotate("text", y=470, x=ymd("2016-07-01"), label="2010-2014 average" , vjust=0 )+
+    
+    
+    #geom_hline(yintercept = seq(3400,4200, 200), size=.05, col="grey70")+
+    # scale_y_log10()+
+    # geom_hline(yintercept =c(100, 250, 500,1000,2500 ), size=.05, col="grey70")+
+    #hrbrthemes::theme_ipsum_rc(grid_col="grey95")+
+    labs(y= "TJ/day",
+         x = NULL,
+         title= "QLD domestic gas balance regional supply - Curtis Island demand",
+         subtitle="monthly averages")
+
 
 #----------------
 # regional.qld.balance
@@ -79,8 +132,8 @@ prod.qld.b1<-bind_rows(prod.qld.archived %>% subset(gasdate< ymd("2015-01-01"))%
                        prod.qld.b %>% mutate(q= "prod- CI demand") %>% 
                          select(gasdate, balance,q,month) )
 
-wall.flow.names[[3]] <- "regional.qld.balance"
-wall.flow.plots[[3]] <-  ggplot(head(prod.qld.b1, -1), aes(gasdate, balance))     +
+wall.flow.names[[5]] <- "regional.qld.balance"
+wall.flow.plots[[5]] <-  ggplot(head(prod.qld.b1, -1), aes(gasdate, balance))     +
   geom_line(size=.2, aes(col=q))  +
   geom_smooth(aes(group=month), method="lm", se=F, formula=y~1, col="grey30", size=.5)+
   #hrbrthemes::theme_ipsum_rc(grid=T, grid_col=mmt::add.alpha("grey70",.25),)+
@@ -158,8 +211,8 @@ cflows.4 <-bind_rows(flows.arch.4,flows.4)
 df <- head(cflows.4 %>% subset(gasdate> ymd("2010-01-01")), -1) %>%
   mutate(m=month(gasdate))
 
-wall.flow.names[[4]] <- "swq.moomba.flows"
-wall.flow.plots[[4]] <-  ggplot(df, 
+wall.flow.names[[6]] <- "swq.moomba.flows"
+wall.flow.plots[[6]] <-  ggplot(df, 
        aes( gasdate, net))     +
   geom_line(size=.15, col="pink")  +
   geom_smooth(aes(group=month), method="lm", se=F, formula=y~1, col="grey40")+
@@ -183,8 +236,8 @@ df.y<- df %>%
   group_by(year) %>%
   summarise(gasdate=mean(gasdate), net=mean(net))
 
-wall.flow.names[[5]] <- "swq.moomba.flows.annual" 
-wall.flow.plots[[5]] <-  ggplot(df %>% subset(gasdate>ymd("2013-01-01")), 
+wall.flow.names[[7]] <- "swq.moomba.flows.annual" 
+wall.flow.plots[[7]] <-  ggplot(df %>% subset(gasdate>ymd("2013-01-01")), 
        aes( gasdate, net))     +
   geom_line(size=.15, col="grey70")  +
   # geom_smooth(aes(group=month), method="lm", se=F, formula=y~1, col="grey40")+
@@ -205,6 +258,28 @@ wall.flow.plots[[5]] <-  ggplot(df %>% subset(gasdate>ymd("2013-01-01")),
        subtitle="monthly averages +ve flow into QLD")+
   geom_hline(yintercept = 0, size=.3)+
   coord_cartesian(ylim=c(-350,350))
+
+# 
+# 
+# 
+# wall.flow.names[[8]] <- "regional.qld.supply.CI.demand" 
+# wall.flow.plots[[8]]<-  ggplot(head(prod.qld.b, -1), aes(gasdate, supply))   +
+#     geom_line(size=.1, col="blue3", alpha=.8)  +
+#     geom_line(data=  flows.ci.b, aes(gasdate, demand), size=.1, colour = "red1", alpha=.8)  +
+#     
+#     geom_smooth(aes(group=month), method="lm", se=F, formula=y~1, col="grey30", size=.5)+
+#     
+#     
+#     geom_smooth(data=  flows.ci.b, aes(gasdate, demand,group=month), method="lm", se=F, formula=y~1, col="red3", size=.5)+
+#     
+#     #geom_hline(yintercept = seq(3400,4200, 200), size=.05, col="grey70")+
+#     # scale_y_log10()+
+#     # geom_hline(yintercept =c(100, 250, 500,1000,2500 ), size=.05, col="grey70")+
+#     #hrbrthemes::theme_ipsum_rc(grid_col="grey95")+
+#     labs(y= "TJ/day",
+#          x = NULL,
+#          title= "Regional - QLD supply (blue), Curtis Island demand (red)",
+#          subtitle="monthly averages")
 
 
 #----------------

@@ -47,7 +47,8 @@ prod.qld.b<-bind_rows(prod.qld.archived,prod.qld ) %>%
   merge( flows.ci.b[,c("gasdate", "demand")]) %>%
   mutate(balance= supply-demand)
 
-
+prod.qld.b.month<-prod.qld.b %>% group_by(month)  %>%
+  summarise(gasdate=mean(gasdate),supply=mean(supply), demand=mean(demand), balance=supply-demand)
 
 #-------
 

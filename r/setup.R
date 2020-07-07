@@ -5,7 +5,6 @@ library(readxl)
 library(magrittr)
 library(lubridate)
 
-   
 #---------------
 theme_set(  hrbrthemes::theme_ipsum())# base_family = "Roboto Condensed"))
 theme_get()
@@ -15,8 +14,7 @@ theme_replace(
     size=.1,
     linetype=2,
     colour="grey80"
-  ),
-
+),
   plot.title= element_text(
     size=13,
     family="Arial Narrow",
@@ -42,8 +40,14 @@ archived.flows.csv <- "data/archived/ActualFlows.csv"
 
 # current flows need manual updating at 
 # https://www.aemo.com.au/energy-systems/gas/gas-bulletin-board-gbb/data-portal
- 
-current.flows.csv <-"data/Actual Flow and Storage_20200401074734.csv"
+# current.flows.csv <-"data/Actual Flow and Storage_20200304114556.csv"  #this needs manual updating
+# current.flows.csv <-"data/Actual Flow and Storage_20200306222127.csv"
+# current.flows.csv <-"data/Actual Flow and Storage_20200309062023.csv"
+# current.flows.csv <-"data/Actual Flow and Storage_20200318050353.csv"
+# current.flows.csv <-"data/Actual Flow and Storage_20200322132204.csv"
+# current.flows.csv <-"data/Actual Flow and Storage_20200405180110.csv"
+current.flows.csv   <-"data/Actual Flow and Storage_20200416212904.csv"
+current.flows.csv   <-"data/Actual Flow and Storage_20200423135038.csv"
 # vars
 
 QGP   <- "Queensland Gas Pipeline"  
@@ -54,11 +58,8 @@ WGP   <- "Wallumbilla to Gladstone Pipeline"
 
 # data_prep
 
-
 update=T
-rrp.cap=300
- 
-#download_aemo_aggregated()
+
 read_aemo()
 hub = "SEQ"
 if (!exists("flows") | update==T) source('r/read_flows.R')
@@ -80,7 +81,7 @@ if (!exists("flows.ci") | update==T) source("r/wall_flows.R")
 #extrafont::loadfonts( quiet = FALSE)
 
 if (!exists("plots")) plots=T
-if (!exists("do_save")) do_save=F # do_save=T
+if (!exists("do_save")) do_save=T # do_save=T
 width=7; height=4.8
 if (plots){
   
@@ -88,8 +89,6 @@ source("r/wall_price_plots.R")
 source("r/wall_flow_plots.R")
 source("r/lng_prod_plots.R")
 #source("r/china.lng.R")
-  
-save(wall.price.plots, wall.price.names, lng.prod.names, lng.prod.names, wall.flow.plots, wall.flow.names, file="data/plots.Rdata")
 }
- 
+
 

@@ -161,7 +161,7 @@ wall.price.plots[[4]] <-  ggplot(merge.byweek.df,
   # annotate(geom="text", x=12, y=50, label="$50/MWhr", vjust=1.3, size=3)+
   # annotate(geom="text", x=5, y=170, label="$5/GJ", vjust=-.5, angle=90, size=3)
   scale_y_log10(breaks=c(25,35,50,70,100,150, 200))+
-  annotate("text", x=2, y=115, label = get_fits(merge.byweek.df %>% subset(date>ymd("2014-01-01")) ), size=2.2, hjust=0)+
+  annotate("text", x=1, y=145, label = get_fits(merge.byweek.df %>% subset(date>ymd("2014-01-01")) ), size=2.2, hjust=0)+
   #   geom_point(data=tail(merge.byweek.df,1), size=3.7, col="white", shape=17)+
   # geom_point(data=tail(merge.byweek.df,1), size=2.7, col="black", shape=17)+
   #   ggrepel::geom_text_repel(data=tail(merge.byweek.df,1), aes(label=paste(date)),
@@ -182,8 +182,8 @@ geom_point(data= merge.byweek.df %>% subset(week==last.week ), size=3.7, col="wh
   geom_point(data=merge.byweek.df %>% subset(week==last.week ), size=2.7, aes(col=Y) ,shape=17, show.legend = F)+
   ggrepel::geom_label_repel(data=merge.byweek.df %>% subset(week==last.week ), 
                            aes(col=Y,label=paste0(date,"\n(",round(vwp),"/", round(benchmark_price,1),")")),
-                           nudge_y=c(.4, .4,-.4), 
-                           nudge_x=c(-.6,.6,.6), 
+                           nudge_y=c(.4, .4,.4, .4, .4, -.4,-.4,-.4)*.35, 
+                           nudge_x=c(-.6,-.6,-.6, -.6, -.6, .6,.6,.6)*1.3, 
                            label.size = 0,
                            size=2.4,
                            segment.size = .3, show.legend = F)

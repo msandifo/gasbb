@@ -70,7 +70,8 @@ read_aemo<- function(update=T, return=T){
   this.year <- year(Sys.Date())
   this.month <- month(Sys.Date()) 
   last.month <- this.month - 1 
-  
+  print(last.month)
+  print(this.year)
   download_aemo_aggregated (year=2010:last.year, month=1:12)
   if (last.month>0) download_aemo_aggregated (year=this.year, month=1:last.month)
   download_aemo_current()

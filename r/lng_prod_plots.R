@@ -1,6 +1,7 @@
-total.prod.month<- total.prod.month %>% mutate(gasdate = ymd(paste0(year, "-", month,"-15")))
+total.prod.month<- total.prod.month %>% 
+  mutate(gasdate = ymd(paste0(year, "-", month,"-15")))
 tz(total.prod.month$gasdate)<- "Australia/Brisbane"
-
+total.prod.month$gasdate<- as.Date(total.prod.month$gasdate)
   
 lng.prod.plots  <- list()
 lng.prod.names <- list()
@@ -11,7 +12,9 @@ lng.prod.names <- list()
   
 lng.prod.names[[1]] <-"aus.east.coast.exports.domestic"
     
-lng.prod.plots[[1]] <- ggplot(total.prod.month %>% subset(state!="NSW") %>%
+lng.prod.plots[[1]] <- ggplot(total.prod.month %>% 
+                              #  mutate(gasdate = as.Date(gasdate))%>%
+                                subset(state!="NSW") %>%
          mutate(state = factor(state, levels=c(#"NSW",
                                                "SA", "VIC", "QLD"))), #  %>%#subset (gasdate != g.date) , 
   aes(gasdate, supply, fill=state  )) +
@@ -90,7 +93,7 @@ lng.prod.plots[[2]]<-   ggplot( total.prod.month %>% subset( state !="NSW") %>%
 #------------
   
   
-ndays.offset<-10
+ndays.offset<- mday(Sys.Date())   #10
   
 lng.prod.names[[3]] <-"aus.east.coast.exports.domestic.balance"
   
@@ -334,7 +337,7 @@ lng.prod.plots[[6]] <-ggplot(total.prod.month.join %>% subset( state !="NSW" &ga
 
 lng.prod.names[[7]] <-"aus.east.coast.exports.domestic.balance.8.stack"
 
-lng.prod.plots[[7]] <-  ggplot(total.prod.month.join %>% subset( state !="NSW" &gasdate< Sys.Date()-days(ndays.offset))%>%
+lng.prod.plots[[7]]<-  ggplot(total.prod.month.join %>% subset( state !="NSW" &gasdate< Sys.Date()-days(ndays.offset))%>%
                mutate(state = factor(state, levels=c(#"NSW", 
                  "SA", "VIC", "QLD"))) , # %>%
              #subset (gasdate != g.date) , 

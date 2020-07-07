@@ -10,7 +10,7 @@ if (!exists("aemo")){
   as.Date(aemo$settlementdate) 
 } 
  
-if (!exists("rrp.cap")) rrp.cap<-13000
+if (!exists("rrp.cap")) rrp.cap<-300
 message("rrp.cap set at $",rrp.cap)
 
 nem.vwp<- nem_vwp(aemo %>% subset(rrp<=rrp.cap))

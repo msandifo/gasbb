@@ -1,12 +1,15 @@
 ---
-title: "Some comments on the Australian\ndomestic gas market supply"
+title: |-
+  Some comments on the Australian
+  domestic gas market supply
 author: "Mike Sandiford"
 date: "11/02/2020"
 output:
-  pdf_document:
-    dev: cairo_pdf
   html_document:
     dev: png
+  pdf_document:
+    dev: cairo_pdf
+  word_document: default
 ---
 
 ```{r setup, include=F, cache=F}
@@ -52,22 +55,22 @@ theme_replace(
 
 The structur and functionong of Australian energy markets have experienced unprecedented changes in recnet years, manifest mot directly in dramatic price rises. There have been numerous drivers for these changes, including, but not limited to, the imperative to decarbosne what is one of the most CO2-intensive energy supply chains in the developed world. Overalid on thes changes has be a highly ractious politccal dyanmic, with contentious energy polciy arguably directly contibuting to the downfall of four prime-ministers within 10 years.
 
-The most signfincat structural change in eastern Australian markets, which services over 80% of the Australian population, was the transition of the gas market  from being solely domestic to  export linked via the co-development of LNG exports capacity at Curtis Island and the coal seam gas fields (CSG) in Queensland. 
+The most significant structural change in eastern Australian markets, which services over 80% of the Australian population, was the transition of the gas market  from being solely domestic to  export linked via the co-development of LNG exports capacity at Curtis Island and the coal seam gas fields (CSG) in Queensland. 
 
-The new CSG fields resulted in a tripling of gas supply, the majority of which was destined for export.  At such scale these new developments exposed a risk that production would fall short of targets, and therefore imapct domesti availability. As much was acknowledged as early as 2013 in the joint Department of Industry and Bureau of Resources and Energy Economics study into the Eastern Australian domestic gas market^[Eastern Australian Domestic Gas Market Study, the Department of Industry and the Bureau of Resources and Energy Economics (BREE).https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=2ahUKEwjY0_fm74noAhXXxzgGHYoGC3YQFjAAegQIARAB&url=https%3A%2F%2Fwww.aph.gov.au%2F~%2Fmedia%2FCommittees%2Feconomics_ctte%2Festimates%2Fadd_1617%2FIndustry%2Fanswers%2FAI-87_Whish-Wilson_Attachment3.pdf&usg=AOvVaw23Fh1haaQCDPujUQ5j6k38]. To quote
+The new CSG fields resulted in a tripling of gas supply, the majority of which was destined for export.  At such scale these new developments exposed a risk that production would fall short of targets, and therefore impact domestic availability. As much was acknowledged as early as 2013 in the joint Department of Industry and Bureau of Resources and Energy Economics study into the Eastern Australian domestic gas market^[Eastern Australian Domestic Gas Market Study, the Department of Industry and the Bureau of Resources and Energy Economics (BREE).https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=2ahUKEwjY0_fm74noAhXXxzgGHYoGC3YQFjAAegQIARAB&url=https%3A%2F%2Fwww.aph.gov.au%2F~%2Fmedia%2FCommittees%2Feconomics_ctte%2Festimates%2Fadd_1617%2FIndustry%2Fanswers%2FAI-87_Whish-Wilson_Attachment3.pdf&usg=AOvVaw23Fh1haaQCDPujUQ5j6k38]. To quote
 
 >The current development of LNG in eastern Australia and the expected tripling of gas demand are creating conditions that are in stark contrast to those in the previously isolated domestic gas market. The timely development of gas resources will be important to ensure that supply is available for domestic gas users and to meet LNG export commitments. Such is the scale of the LNG projects that even small deviations from the CSG reserve development schedule could result in significant volumes of gas being sourced from traditional domestic market supplies
 
 With gas market export linkage now some 5 years old, it is timely to review how the markest repsonded, at what polciy  actions might have beeen taken to avert some of the deleterious side effects.
 
 The analysis here is based on data sourced from AEMO and the exprt cargo statistics released by Gladstone Port Authority (GPA).
-^[Note that in the figures NSW is negelected since it's contribution to east coast gas production is very small.]
+^[Note that in the figures NSW is neglected since it's contribution to east coast gas production is very small.]
  
 
 
 ### A brief history of CSG developments in Queensland
 
-The develpoment of  csg fields is described in
+The develpoment of  csg fields is described in ...
 
 
 ### Total gas production by state
@@ -80,7 +83,7 @@ The key feature is the ramp up of east coast gas production in 2015 \& 2016, fro
 lng.prod.plots[[1]]
 ```
 
-also illustrated are
+Also illustrated are
 
 * gas exported as reported by the GPA (yellow line), and 
 *
@@ -110,13 +113,13 @@ Note-
 lng.prod.plots[[3]]+ggplot2::labs(title=NULL)
 ```
 
-Domestic demand shows a stong seasonal variatoon reflecting due to the historical use of gas for winter heating in the southern states, with peak production historically at slightly aove 2000 TJ/day. 
+Domestic demand shows a stong seasonal variation reflecting the  use of gas for winter heating in the southern states, with peak production historically at slightly aove 2000 TJ/day. 
 
 Noted
 
 * steady reduction in the peak supply to < 2000 TJ/day is evident since the winter of 2014, reflecting a significant tightening of the domestic supply.
 * neglible contribution of QLD supply to the domestic markets in late 2016.
-* a stronger seasonalality in QLD domestic supply, due more to variation in exports than to production 
+* a stronger seasonality in QLD domestic supply, due more to variation in exports than to production 
 
 
 
