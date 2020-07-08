@@ -79,7 +79,7 @@ if (!exists("flows.ci") | update==T) source("r/wall_flows.R")
 #extrafont::loadfonts()
 
 #extrafont::loadfonts( quiet = FALSE)
-
+plot.type <- "pdf"
 if (!exists("plots")) plots=T
 if (!exists("do_save")) do_save=T # do_save=T
 width=7; height=4.8
