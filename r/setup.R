@@ -47,7 +47,7 @@ archived.flows.csv <- "data/archived/ActualFlows.csv"
 # current.flows.csv <-"data/Actual Flow and Storage_20200322132204.csv"
 # current.flows.csv <-"data/Actual Flow and Storage_20200405180110.csv"
 current.flows.csv   <-"data/Actual Flow and Storage_20200416212904.csv"
-current.flows.csv   <-"data/Actual Flow and Storage_20200423135038.csv"
+current.flows.csv   <-"data/Actual Flow and Storage_20200707211738.csv" #data/Actual Flow and Storage_20200423135038.csv"
 # vars
 
 QGP   <- "Queensland Gas Pipeline"  

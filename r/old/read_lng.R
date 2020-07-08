@@ -11,7 +11,7 @@ glad.lng <-rbind(purrr::map_df(1:12,    reproscir::read_gladstone_ports, year=20
                  purrr::map_df(1:12,    reproscir::read_gladstone_ports, year=2017 ),
                  purrr::map_df(1:12,    reproscir::read_gladstone_ports, year=2018 ),
                  purrr::map_df(1:12,    reproscir::read_gladstone_ports, year=2019 ),
-                 purrr::map_df(1:1,    reproscir::read_gladstone_ports, year=2020 )
+                 purrr::map_df(1:6,    reproscir::read_gladstone_ports, year=2020 )
 )
 
 glad.lng$TJ <-glad.lng$tonnes * 12 * 8.975/172/365
